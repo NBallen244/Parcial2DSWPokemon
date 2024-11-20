@@ -12,5 +12,11 @@
       <h3><b>Detalles</b></h3>
       <app-pokemon-detail [pokemon]="selectedPokemon"></app-pokemon-detail>
     </div>
+    <div class="row">
+      <h3><b>Cantidades por tipo</b></h3>
+      <div *ngFor="let conteo of conteoTipos">
+        <p>{{ conteo.tipo }}: {{ conteo.conteo }}</p>
+      </div>
+    </div>
   </div>
 </div>

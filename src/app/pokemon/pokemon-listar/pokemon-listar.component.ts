@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { PokemonDetailDto } from '../pokemonDetailDto';
+import { ConteoDto, PokemonDetailDto } from '../pokemonDetailDto';
 
 @Component({
   selector: 'app-pokemon-listar',
@@ -10,6 +10,7 @@ import { PokemonDetailDto } from '../pokemonDetailDto';
 export class PokemonListarComponent implements OnInit {
 
   pokemones:PokemonDetailDto[]=[];
+  conteoTipos:ConteoDto[]=[];
   servicio:PokemonService;
   selected:boolean=false;
   selectedPokemon!:PokemonDetailDto;
@@ -20,6 +21,8 @@ export class PokemonListarComponent implements OnInit {
 
   getPokemons(){
     this.pokemones = this.servicio.getPokemons();
+    this.pokemones.forEach(pokemon => pokemon.types.forEach(tipo=>{this.servicio.getPokemonsByType(tipo.type.name)}));
+    this.conteoTipos = this.servicio.getConteos();
   }
 
   selectPokemon(pokemon:PokemonDetailDto){

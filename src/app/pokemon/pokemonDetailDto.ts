@@ -55,3 +55,13 @@ export class SpriteDto {
     this.front_shiny_female = front_shiny_female;
   }
 }
+
+export class ConteoDto {
+  tipo:string;
+  conteo:number;
+
+  constructor(tipo: string, conteo: number) {
+    this.tipo = tipo;
+    this.conteo = conteo;
+  }
+}

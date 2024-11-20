@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PokemonDetailDto } from './pokemonDetailDto';
+import { PokemonDetailDto, ConteoDto } from './pokemonDetailDto';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { PokemonDetailDto } from './pokemonDetailDto';
 export class PokemonService {
   apiUrl : string = "https://pokeapi.co/api/v2/pokemon/";
   pokemones:PokemonDetailDto[] = [];
+  conteos:ConteoDto[] = []; 
 
   constructor(private http : HttpClient) { }
 
@@ -35,7 +36,13 @@ export class PokemonService {
           pokemonesTipo.push(pokemon);
         }});
     });
+    let contador:ConteoDto=new ConteoDto(type, pokemonesTipo.length);
+    this.conteos.push(contador);
     return pokemonesTipo;
+  }
+
+  getConteos():ConteoDto[]{
+    return this.conteos;
   }
 
 }
