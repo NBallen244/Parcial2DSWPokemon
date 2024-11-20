@@ -1,0 +1,21 @@
+<div class="'container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ pokemon.name }}</h5>
+      <img src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
+      <p class="card-text"><b>ID:</b> {{ pokemon.id }}</p>
+      <p class="card-text"><b>Peso:</b> {{ pokemon.weight }}</p>
+      <p class="card-text"><b>Altura:</b> {{ pokemon.height }}</p>
+      <p class="card-text"><b>Habilidades:</b></p>
+      <ul>
+        <li *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</li>
+      </ul>
+      <p class="card-text"><b>Tipos:</b></p>
+      <ul>
+        <li *ngFor="let type of pokemon.types">
+          <a routerLink="/types/{{ type.type.name }}">{{ type.type.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

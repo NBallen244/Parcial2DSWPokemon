@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { TypeModule } from './type/type.module';
+import { TypeRoutingModule } from './type/type-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TypeModule } from './type/type.module';
     AppRoutingModule,
     HttpClientModule,
     PokemonModule,
-    TypeModule
+    TypeModule,
+    TypeRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

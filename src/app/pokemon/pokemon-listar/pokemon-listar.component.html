@@ -1,12 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col" *ngFor="let pokemon of pokemones">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;" (click)="selectPokemon(pokemon)">
         <div class="card-body">
           <h5 class="card-title">{{ pokemon.name }}</h5>
           <img src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
         </div>
       </div>
+    </div>
+    <div *ngIf="selected">
+      <h3><b>Detalles</b></h3>
+      <app-pokemon-detail [pokemon]="selectedPokemon"></app-pokemon-detail>
     </div>
   </div>
 </div>

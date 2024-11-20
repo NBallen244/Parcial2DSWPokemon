@@ -8,6 +8,7 @@ import { PokemonDetailDto } from './pokemonDetailDto';
 })
 export class PokemonService {
   apiUrl : string = "https://pokeapi.co/api/v2/pokemon/";
+  pokemones:PokemonDetailDto[] = [];
 
   constructor(private http : HttpClient) { }
 
@@ -18,11 +19,23 @@ export class PokemonService {
         pokemons.push(pokemon);
       });
     }
+    this.pokemones = pokemons;
     return pokemons;
   }
 
   getPokemon(id : string): Observable<PokemonDetailDto> {
     return this.http.get<PokemonDetailDto>(`${this.apiUrl}${id}`);
+  }
+
+  getPokemonsByType(type:string):PokemonDetailDto[]{
+    let pokemonesTipo:PokemonDetailDto[] = [];
+    this.pokemones.forEach(pokemon => {
+      pokemon.types.forEach(tipo => {
+        if(tipo.type.name == type){
+          pokemonesTipo.push(pokemon);
+        }});
+    });
+    return pokemonesTipo;
   }
 
 }

@@ -22,6 +22,10 @@ export class PokemonListarComponent implements OnInit {
     this.pokemones = this.servicio.getPokemons();
   }
 
+  selectPokemon(pokemon:PokemonDetailDto){
+    this.selectedPokemon = pokemon;
+    this.selected = true}
+
   ngOnInit() {
     this.getPokemons();
   }
