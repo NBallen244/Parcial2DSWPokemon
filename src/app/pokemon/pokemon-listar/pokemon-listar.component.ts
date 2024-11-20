@@ -34,6 +34,7 @@ export class PokemonListarComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemons();
+    this.actualizarconteo();
   }
 
 }
