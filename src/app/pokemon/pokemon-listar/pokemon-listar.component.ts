@@ -21,6 +21,9 @@ export class PokemonListarComponent implements OnInit {
 
   getPokemons(){
     this.pokemones = this.servicio.getPokemons();
+  }
+
+  actualizarconteo(){
     this.pokemones.forEach(pokemon => pokemon.types.forEach(tipo=>{this.servicio.getPokemonsByType(tipo.type.name)}));
     this.conteoTipos = this.servicio.getConteos();
   }
